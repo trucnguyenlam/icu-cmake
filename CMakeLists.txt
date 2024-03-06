@@ -24,8 +24,6 @@
 cmake_minimum_required(VERSION 3.2...3.27)
 project(icu-cmake)
 
-set(CMAKE_CXX_STANDARD 14)
-
 # cache variables
 set(BUILD_ICU OFF CACHE BOOL "Enable compilation of ICU")
 set(ICU_BUILD_VERSION "" CACHE STRING "ICU version to build")
