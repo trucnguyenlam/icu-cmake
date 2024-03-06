@@ -24,6 +24,8 @@
 cmake_minimum_required(VERSION 3.2...3.27)
 project(icu-cmake)
 
+set(CMAKE_CXX_STANDARD 14)
+
 # cache variables
 set(BUILD_ICU OFF CACHE BOOL "Enable compilation of ICU")
 set(ICU_BUILD_VERSION "" CACHE STRING "ICU version to build")
@@ -61,3 +63,5 @@ endif()
 # link system, cross or host libraries to interface target
 target_link_libraries(icu INTERFACE ${ICU_LIBRARIES})
 target_include_directories(icu INTERFACE ${ICU_INCLUDE_DIRS})
+# strip debug info
+set_target_properties(icu PROPERTIES LINK_FLAGS_RELEASE -s)
