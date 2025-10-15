@@ -1,10 +1,15 @@
 set -e
 
 export GIT_SUBMODULE_STRATEGY=recursive
-export ICU_BUILD_VERSION=74.2
-export ICU_BUILD_HASH=68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c
 export ANDROID_PLATFORM=android-23
-export ANDROID_NDK=~/sdks/android/ndk/26.2.11394342
+# export ICU_BUILD_VERSION=74.2
+# export ICU_BUILD_HASH=68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c
+# export ANDROID_NDK=~/sdks/android/ndk/26.2.11394342
+export ICU_BUILD_VERSION=77.1
+export ICU_BUILD_HASH=588e431f77327c39031ffbb8843c0e3bc122c211374485fa87dc5f3faff24061
+# for page size alignment
+export ANDROID_NDK=~/sdks/android/ndk/28.2.13676358
+
 
 cmake -B build-android-armeabi-v7a -DCMAKE_BUILD_TYPE=Release -DBUILD_ICU=ON -DICU_BUILD_VERSION=$ICU_BUILD_VERSION -DICU_BUILD_HASH=$ICU_BUILD_HASH -DANDROID_PLATFORM=$ANDROID_PLATFORM -DANDROID_ABI=armeabi-v7a -DANDROID_TOOLCHAIN=clang -DANDROID_NDK=$ANDROID_NDK -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake
 cmake --build build-android-armeabi-v7a --config Release
